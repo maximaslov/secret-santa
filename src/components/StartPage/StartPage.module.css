@@ -1,0 +1,61 @@
+.StartPageContainer {
+    text-align: center;
+}
+
+.StartPageContainer h3 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.firstText {
+    animation: 1s show ease;
+}
+
+.firstInput {
+    animation: 1.5s show ease;
+}
+
+.secondInput {
+    animation: 2s show ease;
+}
+
+.checkbox {
+    animation: 2.2s show ease;
+}
+
+.firstButton {
+    animation: 2.5s show ease;
+}
+
+.secondText {
+    animation: 3s show ease;
+}
+
+.secondButton {
+    animation: 3s show ease;
+}
+
+.inputs {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 365px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.disabledBtn {
+    background-color: rgba(0, 128, 0, 0.055);
+    animation: 1s show ease;
+
+}
+
+@keyframes show {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+@keyframes hide {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
