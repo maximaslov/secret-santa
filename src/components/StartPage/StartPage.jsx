@@ -50,7 +50,10 @@ const StartPage = (props) => {
                     placeholder="Введіть пароль вашоі компанії"
                     onChange={updateInputPassword}/>
                     <form className={styles.checkbox}>
-                        <input onClick={togglePassword} type="checkbox"/>
+                        <input 
+                            className={styles.checkboxInput}
+                            onClick={togglePassword} 
+                            type="checkbox"/>
                         <label>Показати пароль</label>
                     </form>
             </div>

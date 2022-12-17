@@ -1,12 +1,48 @@
 .MainPageContainer {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
+.MainPageContainer h3 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  max-width: 1160px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.button {
+  width: 65px;
+  margin-right: 70px;
+}
+
+.text {
+  position: absolute;
+  margin: 35px 0 0 65px;
+  font-size: 14px;
+}
+
+.rusButton {
+  position: absolute;
+  margin-left: 65px;
+  transition: 0.09s;
+}
+
+.rusMobileButton {
+  display: none;
+  position: absolute;
+  margin-left: 65px;
+}
 
 @keyframes show {
     from { opacity: 0; }
@@ -17,3 +53,16 @@
     from { opacity: 1; }
     to { opacity: 0; }
   }
+
+  @media (max-width: 1180px) {
+    .rusMobileButton {
+      display: block;
+    }
+    .rusButton {
+      display: none;
+    }
+    body {
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+}

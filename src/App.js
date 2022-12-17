@@ -9,17 +9,20 @@ import NewCompany from './components/NewCompany/NewCompany';
 import ResultPage from './components/ResultPage/ResultPage';
 import {SantaApi} from './api';
 import Loader from "./components/Loader/Loader";
+import music from './sounds/Frank.mp3';
+import useSound from 'use-sound';
 
 //mockapi.io 
 //e-mail: secretsanta2023app@gmail.com
 //password: SecretSanta2023App
 
 function App() {
+  const [play] = useSound(music);
   const [companyInputValue, setCompanyInputValue] = useState('');
   const [passwordInputValue, setPasswordInputValue] = useState('');
   const [currentCompany, setCurrentCompany] = useState(null);
   const [nameInputValue, setNameInputValue] = useState('');
-  const [membersInputValue, setMembersInputValue] = useState(null);
+  const [membersInputValue, setMembersInputValue] = useState('');
   const [newCompanyPassword, setNewCompanyPassword] = useState('');
   const [totalMembers, setTotalMembers] = useState(null);
   const [result, setResult] = useState(null);
@@ -34,6 +37,7 @@ function App() {
     showFriendsList: false,
     showLoader: false,
     disabled: true,
+    disabledNewCompanyBtn: true,
   });
 
   const hideMainPage = () => {
@@ -236,7 +240,7 @@ function App() {
       <div className={styles.appWrapper}>
          <Snowfall />
         <div className={styles.appWrapperContent}>
-          {state.showMainPage && <MainPage hideMainPage={hideMainPage} />}
+          {state.showMainPage && <MainPage play={play} hideMainPage={hideMainPage} />}
 
           {state.showStartPage && (
             <StartPage
@@ -263,6 +267,7 @@ function App() {
 
           {state.showNewCompanyPage && (
             <NewCompany
+              membersInputValue={membersInputValue}
               updateNewCompanyTotalMembers={updateNewCompanyTotalMembers}
               state={state}
               setState={setState}

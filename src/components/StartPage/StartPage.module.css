@@ -23,6 +23,12 @@
     animation: 2.2s show ease;
 }
 
+.checkboxInput {
+    width: 20px;
+    height: 20px;
+    cursor: url('../../img/cursor.png'), pointer;
+}
+
 .firstButton {
     animation: 2.5s show ease;
 }
@@ -47,7 +53,6 @@
 .disabledBtn {
     background-color: rgba(0, 128, 0, 0.055);
     animation: 1s show ease;
-
 }
 
 @keyframes show {

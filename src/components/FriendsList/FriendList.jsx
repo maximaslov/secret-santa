@@ -1,5 +1,6 @@
 import React from "react";
 import { Formik, Form, Field, FieldArray } from 'formik';
+import styles from "./FriendsList.module.css";
  
  export const FriendList = (props) => {
   const membersAmount = new Array(props.totalMembers);
@@ -19,14 +20,14 @@ import { Formik, Form, Field, FieldArray } from 'formik';
   }
 
   return (
-    <div>
-      <h1>Friend List</h1>
+    <div className={styles.friendsListContainer}>
+      <h1 className={styles.text}>Список друзів</h1>
       <Formik
         initialValues={{ friends: [...friendsArray] }}
         onSubmit={values => {createNewCompany(values)}}>
           {(
           { values }) => (
-          <Form>
+          <Form className={styles.form}>
             <FieldArray
               name="friends"
               render={arrayHelpers => (
@@ -55,8 +56,9 @@ import { Formik, Form, Field, FieldArray } from 'formik';
                       Add a friend
                     </button>
                   )}
-                  <div>
-                    <button type="submit">Submit</button>
+                  <div className={styles.button}>
+                    <button 
+                      type="submit">Submit</button>
                   </div>
                 </div>
               )}

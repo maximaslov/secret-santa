@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FriendList } from '../FriendsList/FriendList';
+import styles from './NewCompany.module.css';
 
 const NewCompany = (props) => {
     const [passwordShown, setPasswordShown] = useState(false);
@@ -18,6 +19,16 @@ const NewCompany = (props) => {
         props.updateNewCompanyTotalMembers(Number(e.target.value))
     }
 
+    const updateSecondPasswordInput = (e) => {
+        setSecondPasswordInput(e.target.value)
+        if(props.membersInputValue !== ''
+        && firstPasswordInput !== ''
+        && secondPasswordInput !== ''){
+            props.setState({
+                ...props.state, disabledNewCompanyBtn: false,
+            })
+        }
+    }
     const createCompany = () => {
         if(firstPasswordInput === secondPasswordInput) {
             props.showMembersNamesInputs();
@@ -26,35 +37,51 @@ const NewCompany = (props) => {
             alert('Паролі не співпадають');
             setFirstPasswordInput('');
             setSecondPasswordInput('');
+            props.setState({
+                ...props.state, disabledNewCompanyBtn: true,
+            })
         }
     }
     
     return (
         <>
             {props.state.showNewCompanyMembersInput && 
-                <div>
-                    <p>Введіть кількість участників</p>
-                    <input type="text"
-                    onChange={updateInputText}/>
+                <div className={styles.NewCompanyContainer}>
+                    <h4 className={styles.firstText}>Введіть кількість участників</h4>
+                    <input 
+                        value={props.membersInputValue}
+                        className={styles.firstInput} 
+                        type="text"
+                        onChange={updateInputText}/>
 
-                    <p>Придумайте пароль</p>
-                        <input
-                        type={passwordShown ? "text" : "password"} 
-                        value={firstPasswordInput}
-                        onChange={(e) => setFirstPasswordInput(e.target.value)}
-                        placeholder="Введіть пароль"/>
+                    <h4 className={styles.secondText}>Придумайте пароль</h4>
+                        <div className={styles.passwordInputs}>
+                            <input 
+                                className={styles.firstPasswordInput}
+                                type={passwordShown ? "text" : "password"} 
+                                value={firstPasswordInput}
+                                onChange={(e) => setFirstPasswordInput(e.target.value)}
+                                placeholder="Введіть пароль"/>
 
-                        <input 
-                        type={passwordShown ? "text" : "password"} 
-                        value={secondPasswordInput}
-                        onChange={(e) => setSecondPasswordInput(e.target.value)}
-                        placeholder="Повторіть пароль"/>
-                        <form >
-                            <input onClick={togglePassword} type="checkbox"/>
+                            <input 
+                                className={styles.secondPasswordInput}
+                                type={passwordShown ? "text" : "password"} 
+                                value={secondPasswordInput}
+                                onChange={(e) => updateSecondPasswordInput(e)}
+                                placeholder="Повторіть пароль"/>
+                        </div>
+                        
+                        <form className={styles.checkboxForm}>
+                            <input 
+                                className={styles.checkbox}
+                                onClick={togglePassword} 
+                                type="checkbox"/>
                             <label>Показати пароль</label>
                         </form>
                     <button
-                    onClick={createCompany}>Далі</button>
+                        disabled={props.state.disabledNewCompanyBtn ? true : false}
+                        className={props.state.disabledNewCompanyBtn ? styles.disabledBtn : styles.button}
+                        onClick={createCompany}>Далі</button>
                 </div>}
 
             {props.state.showFriendsList &&
