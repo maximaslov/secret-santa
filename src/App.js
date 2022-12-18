@@ -9,15 +9,12 @@ import NewCompany from './components/NewCompany/NewCompany';
 import ResultPage from './components/ResultPage/ResultPage';
 import {SantaApi} from './api';
 import Loader from "./components/Loader/Loader";
-import music from './sounds/Frank.mp3';
-import useSound from 'use-sound';
 
 //mockapi.io 
 //e-mail: secretsanta2023app@gmail.com
 //password: SecretSanta2023App
 
 function App() {
-  const [play] = useSound(music);
   const [companyInputValue, setCompanyInputValue] = useState('');
   const [passwordInputValue, setPasswordInputValue] = useState('');
   const [currentCompany, setCurrentCompany] = useState(null);
@@ -69,6 +66,9 @@ function App() {
     alert('В поточної компанії у всіх є таємний санта');
         setState({
           ...state,
+          showStartPage:true,
+          showMainPage: true,
+          showSecretSantaPagen: false,
           showLoader: false,
         })
         setCompanyInputValue('')
@@ -85,7 +85,10 @@ function App() {
       }
       if (falseStatuses.length === friends.length) {
         allHaveSantasError();
-      } 
+        return false;
+      } else {
+        return true;
+      }
   }
 
   const isValidPassword = (res) => {
@@ -116,11 +119,18 @@ function App() {
     SantaApi.get(companyInputValue)
       .then((res) => {
         if(isValidPassword) {
-          actualMembersControl(res);
-          setLocalCurrentCompany(res);
+          if(actualMembersControl(res)) {
+            setLocalCurrentCompany(res);
+          }
         } else {
           passwordError();
         }
+        // setState({
+        //   ...state,
+        //   showSecretSantaPage: false,
+        //   showLoader: false,
+        //   showStartPage: true,
+        // })
         console.log(typeof(res.data.password));
         console.log(typeof(passwordInputValue));
       }).catch(e => getCompanyError())
@@ -202,7 +212,7 @@ function App() {
 
   const showRandomMember = () => {
     const currentMember = currentCompany.friends.filter(e => e.name === nameInputValue)[0];
-    if(!isMember) {
+    if(!isMember(currentMember)) {
       showNameNotFoundErr();
     }
     else {
@@ -240,7 +250,7 @@ function App() {
       <div className={styles.appWrapper}>
          <Snowfall />
         <div className={styles.appWrapperContent}>
-          {state.showMainPage && <MainPage play={play} hideMainPage={hideMainPage} />}
+          {state.showMainPage && <MainPage hideMainPage={hideMainPage} />}
 
           {state.showStartPage && (
             <StartPage

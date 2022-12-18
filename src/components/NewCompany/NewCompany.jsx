@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FriendList } from '../FriendsList/FriendList';
 import styles from './NewCompany.module.css';
+import PasswordCheckbox from '../PasswordCheckbox/PasswordCheckbox';
 
 const NewCompany = (props) => {
     const [passwordShown, setPasswordShown] = useState(false);
@@ -70,14 +71,17 @@ const NewCompany = (props) => {
                                 onChange={(e) => updateSecondPasswordInput(e)}
                                 placeholder="Повторіть пароль"/>
                         </div>
-                        
-                        <form className={styles.checkboxForm}>
+                        <PasswordCheckbox
+                            checkbox={styles.checkboxForm}
+                            togglePassword={togglePassword}
+                            checkboxInput={styles.checkbox} />
+                        {/* <form className={styles.checkboxForm}>
                             <input 
                                 className={styles.checkbox}
                                 onClick={togglePassword} 
                                 type="checkbox"/>
                             <label>Показати пароль</label>
-                        </form>
+                        </form> */}
                     <button
                         disabled={props.state.disabledNewCompanyBtn ? true : false}
                         className={props.state.disabledNewCompanyBtn ? styles.disabledBtn : styles.button}

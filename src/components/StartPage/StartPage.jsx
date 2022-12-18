@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./StartPage.module.css";
+import PasswordCheckbox from '../PasswordCheckbox/PasswordCheckbox';
 
 const StartPage = (props) => {
     const [passwordShown, setPasswordShown] = useState(false);
@@ -49,13 +50,10 @@ const StartPage = (props) => {
                     value={props.passwordInputValue}
                     placeholder="Введіть пароль вашоі компанії"
                     onChange={updateInputPassword}/>
-                    <form className={styles.checkbox}>
-                        <input 
-                            className={styles.checkboxInput}
-                            onClick={togglePassword} 
-                            type="checkbox"/>
-                        <label>Показати пароль</label>
-                    </form>
+                <PasswordCheckbox
+                    checkbox={styles.checkbox}
+                    togglePassword={togglePassword}
+                    checkboxInput={styles.checkboxInput} />
             </div>
             
             <button 
