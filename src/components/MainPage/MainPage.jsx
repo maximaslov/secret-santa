@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import styles from "./MainPage.module.css"
+import Instruction from '../Instruction/Instruction';
 
 const MainPage = (props) => {
 
-    const [shownMobileRusBtn, setShownMobileRusBtn] = useState(true);
+    const [activeInstructionBtn, setActivInstructionBtn] = useState(false);
 
+    const toggleShowInstruction = () => {
+        setActivInstructionBtn(!activeInstructionBtn);
+        props.setState({
+            ...props.state, 
+            showInctruction: !props.state.showInctruction,
+        })
+      }
     const onBtnCkick = () => {
         props.hideMainPage()
-        // props.play();
     }
 
-    const onRusBtnClick = () => {
-        alert('Нажаль додаток не працює на сєпорській мові')
-        props.hideMainPage()
-    }
-    const onRusMobileBtnClick = () => {
-        setShownMobileRusBtn(false)
-        alert('Нажаль додаток не працює на сєпорській мові');
-        // props.hideMainPage();
+    const onRusBtnClick = (e) => {
+        props.setState({
+            ...props.state, showLanguageError: true,
+        })
+        e.target.classList.add(styles.rusButtonBoom)
+        setTimeout(()=> {
+            e.target.classList.add(styles.rusButtonHide)
+        }, 2000)
     }
 
     const random = (min,max) => {
@@ -30,37 +37,44 @@ const MainPage = (props) => {
         e.target.style.top = `${random(0, 90)}%`
     }
     return (
-        <div className={styles.MainPageContainer}>
+        <div>
+            <button 
+                className={activeInstructionBtn ? styles.instructionBtnActive : styles.instructionBtn}
+                onClick={toggleShowInstruction}
+                >Інструкція
+            </button>
+            {props.state.showInctruction && <Instruction 
+                toggleShowInstruction={toggleShowInstruction}
+                state={props.state}
+                setState={props.setState}
+                setActivInstructionBtn={setActivInstructionBtn} />}
+            {!activeInstructionBtn 
+            ? 
+            <div className={styles.MainPageContainer}>
             <h3>Оберіть мову</h3>
-            <p className={styles.text}>Ти сєпор?</p>
             <div className={styles.buttons}>
                 <button 
                     className={styles.button} 
                     onClick={onBtnCkick}>
                     UA
                 </button>
-
                 <button 
-                    className={styles.rusButton}
-                    onMouseEnter={run}
-                    onClick={onRusBtnClick}
-                    >
-                    RUS
+                    className={styles.mobileButton} 
+                    onClick={onBtnCkick}>
+                    Почати
                 </button>
-                {shownMobileRusBtn && 
-                <button 
-                    className={styles.rusMobileButton}
-                    onClick={onRusMobileBtnClick}
-                    >
-                    RUS
-                </button>
-                }
-                
+                    <button 
+                        className={styles.rusButton}
+                        onMouseEnter={run}
+                        onClick={onRusBtnClick}>
+                        RU
+                    </button>
             </div>
+        </div> 
+        : null
+        }
+    </div>
             
-            
-            
-        </div>
         
     )
 }

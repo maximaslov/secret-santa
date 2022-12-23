@@ -1,20 +1,60 @@
+input{
+    max-width: 280px;
+    width: 100%;
+}
+
 .friendsListContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 30px;
 }
 
 .text {
     animation: 1s show ease;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.field {
+    max-width: 320px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    animation: 1s show ease;
 }
 
 .form {
+    margin: 0 auto;
+    max-width: 320px;
+    width: 100%;
     animation: 1.5s show ease;
 }
 
 .button {
     animation: 2s show ease;
+    max-width: 350px;
+    margin: 0 auto;
 }
+
+.addMembersbutton {
+    margin: 0 auto 10px auto;
+    max-width: 350px;
+    display: flex;
+    justify-content: center;
+    animation: 1s show ease;
+}
+
+.plus {
+    height: 39px;
+    width: 39px;
+}
+.minus {
+    height: 39px;
+    width: 39px;
+    margin: 0 5px 0 5px;
+}
+
 
 @keyframes show {
     from { opacity: 0; }
@@ -25,3 +65,10 @@
     from { opacity: 1; }
     to { opacity: 0; }
   }
+
+@media(max-width: 1180px) {
+    .text {
+        color: white;
+        text-shadow: 0px 0px 5px black;
+    }
+}

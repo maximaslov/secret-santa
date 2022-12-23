@@ -1,16 +1,22 @@
+div {
+  margin: 0 auto;
+}
+
 .MainPageContainer {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
+  margin-top: 200px;
 }
 
 .MainPageContainer h3 {
   font-size: 25px;
   margin-bottom: 10px;
+  text-shadow: 0px 0px 7px white;
+  animation: 1.5s show ease;
 }
 
 .buttons {
@@ -19,6 +25,7 @@
   max-width: 1160px;
   width: 100%;
   justify-content: space-around;
+  animation: 2s show ease;
 }
 
 .button {
@@ -26,22 +33,40 @@
   margin-right: 70px;
 }
 
-.text {
-  position: absolute;
-  margin: 35px 0 0 65px;
-  font-size: 12px;
+.mobileButton {
+  display: none;
+  margin: 0 auto;
 }
 
 .rusButton {
+  width: 65px;
   position: absolute;
   margin-left: 65px;
   transition: 0.09s;
 }
 
-.rusMobileButton {
+.rusButtonBoom {
+  background-color: red;
+  animation: 2s hide ease;
+}
+
+.rusButtonHide {
   display: none;
-  position: absolute;
-  margin-left: 65px;
+}
+
+.instructionBtn {
+  animation: 1s show ease;
+  font-size: 18px;
+}
+
+.instructionBtnActive {
+  font-size: 18px;
+  background-color: white;
+  color: rgba(45, 171, 19, 0.685);
+}
+
+.instructionBtnActive:hover {
+  color: red;
 }
 
 @keyframes show {
@@ -55,14 +80,22 @@
   }
 
   @media (max-width: 1180px) {
-    .rusMobileButton {
+    .mobileButton {
       display: block;
     }
     .rusButton {
       display: none;
     }
+
+    .button {
+      display: none;
+    }
+
     body {
       overflow-x: hidden;
-      overflow-y: hidden;
+    }
+
+    .MainPageContainer h3 {
+      display: none;
     }
 }

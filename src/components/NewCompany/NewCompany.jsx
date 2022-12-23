@@ -8,40 +8,75 @@ const NewCompany = (props) => {
     const [firstPasswordInput, setFirstPasswordInput] = useState('');
     const [secondPasswordInput, setSecondPasswordInput] = useState('');
 
+    const showMemberNumberInputError = () => {
+        props.setState({
+            ...props.state, showMemberNumberInputError: true,
+        })
+        setTimeout( () => {
+            props.setState({
+                ...props.state, showMemberNumberInputError: false,
+            })}, 3000)
+    }
+    const showTotalMembersInputError = () => {
+        props.setState({
+            ...props.state, showTotalMembersInputError: true,
+        })
+        setTimeout( () => {
+            props.setState({
+                ...props.state, showTotalMembersInputError: false,
+            })}, 3000)
+    }
+    const showPasswordInputError = () => {
+        props.setState({
+            ...props.state, 
+            showPasswordInputError: true,
+            disabledNewCompanyBtn: true,
+            showCurrentCompany: true,
+        })
+        setTimeout( () => {
+            props.setState({
+                ...props.state, showPasswordInputError: false,
+            })}, 3000)
+    }
+
     const togglePassword = () => {
         setPasswordShown(!passwordShown);
       };
 
     const updateInputText = (e) => {
         if(isNaN(e.target.value)) {
-            alert('Введіть, будь ласка, кількість цифрою')
+            showMemberNumberInputError();
             e.target.value = '';
+        } else {
+            props.updateNewCompanyTotalMembers(Number(e.target.value))
         }
-        props.updateNewCompanyTotalMembers(Number(e.target.value))
     }
-
+    
     const updateSecondPasswordInput = (e) => {
-        setSecondPasswordInput(e.target.value)
+        setSecondPasswordInput(e.target.value);
+
         if(props.membersInputValue !== ''
-        && firstPasswordInput !== ''
-        && secondPasswordInput !== ''){
-            props.setState({
-                ...props.state, disabledNewCompanyBtn: false,
-            })
+            && firstPasswordInput !== ''
+            && secondPasswordInput !== ''){
+                props.setState({
+                    ...props.state, disabledNewCompanyBtn: false,
+                })
         }
     }
     const createCompany = () => {
-        if(firstPasswordInput === secondPasswordInput) {
-            props.showMembersNamesInputs();
-            props.setNewCompanyPassword(secondPasswordInput);
+        if(Number(props.membersInputValue) === 0 || Number(props.membersInputValue) < 3) {
+            showTotalMembersInputError();
         } else {
-            alert('Паролі не співпадають');
-            setFirstPasswordInput('');
-            setSecondPasswordInput('');
-            props.setState({
-                ...props.state, disabledNewCompanyBtn: true,
-            })
+            if(firstPasswordInput === secondPasswordInput) {
+                props.showMembersNamesInputs();
+                props.setNewCompanyPassword(secondPasswordInput);
+            } else { 
+                setFirstPasswordInput('');
+                setSecondPasswordInput('');
+                showPasswordInputError();
+            }
         }
+        
     }
     
     return (
@@ -50,6 +85,7 @@ const NewCompany = (props) => {
                 <div className={styles.NewCompanyContainer}>
                     <h4 className={styles.firstText}>Введіть кількість участників</h4>
                     <input 
+                        autoFocus={true}
                         value={props.membersInputValue}
                         className={styles.firstInput} 
                         type="text"
@@ -75,13 +111,6 @@ const NewCompany = (props) => {
                             checkbox={styles.checkboxForm}
                             togglePassword={togglePassword}
                             checkboxInput={styles.checkbox} />
-                        {/* <form className={styles.checkboxForm}>
-                            <input 
-                                className={styles.checkbox}
-                                onClick={togglePassword} 
-                                type="checkbox"/>
-                            <label>Показати пароль</label>
-                        </form> */}
                     <button
                         disabled={props.state.disabledNewCompanyBtn ? true : false}
                         className={props.state.disabledNewCompanyBtn ? styles.disabledBtn : styles.button}
@@ -89,7 +118,8 @@ const NewCompany = (props) => {
                 </div>}
 
             {props.state.showFriendsList &&
-                <FriendList 
+                <FriendList
+                    setState={props.setState}
                     totalMembers={props.totalMembers}
                     setNewCompany={props.setNewCompany}
                     state={props.state}
