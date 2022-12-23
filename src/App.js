@@ -100,6 +100,11 @@ function App() {
         })
         setCompanyInputValue('')
         setPasswordInputValue('')
+        setTimeout(() => {
+          setState({
+            ...state, showAllhaveSantaError: false,
+          })
+        },3000)
   }
 
   const actualMembersControl = (res) => {
@@ -130,6 +135,11 @@ function App() {
             showLoader: false,
             showIncorrectPasswordError: true,
           })
+          setTimeout(() => {
+            setState({
+              ...state, showIncorrectPasswordError: false,
+            })
+          }, 3000)
   }
 
   const setLocalCurrentCompany = (res) => {
@@ -145,7 +155,7 @@ function App() {
   const getCurrentCompanyFromApi = () => {
     SantaApi.get(companyInputValue)
       .then((res) => {
-        if(isValidPassword) {
+        if(isValidPassword(res)) {
           if(actualMembersControl(res)) {
             setLocalCurrentCompany(res);
           }
