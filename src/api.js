@@ -1,13 +1,8 @@
 import axios from "axios";
 
-
 const URL = 'https://6394a82986829c49e8236d0d.mockapi.io/secretsanta/';
 
 export const SantaApi = {
-    // getUsers(currentPage=1, pageSize = 5) {
-    //     return axios.get(`users?page=${currentPage}&count=${pageSize}`)
-    //         .then(res => res.data);
-    // },
 
     get(companyId) {
         return axios.get(URL+companyId);

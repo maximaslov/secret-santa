@@ -9,6 +9,9 @@ import NewCompany from './components/NewCompany/NewCompany';
 import ResultPage from './components/ResultPage/ResultPage';
 import {SantaApi} from './api';
 import Loader from "./components/Loader/Loader";
+import background from "./../src/img/background.jpg";
+import backgroundMobile from "./../src/img/background-mobile-2.jpeg";
+import Error from './components/Error/Error'
 
 //mockapi.io 
 //e-mail: secretsanta2023app@gmail.com
@@ -19,7 +22,7 @@ function App() {
   const [passwordInputValue, setPasswordInputValue] = useState('');
   const [currentCompany, setCurrentCompany] = useState(null);
   const [nameInputValue, setNameInputValue] = useState('');
-  const [membersInputValue, setMembersInputValue] = useState(null);
+  const [membersInputValue, setMembersInputValue] = useState('');
   const [newCompanyPassword, setNewCompanyPassword] = useState('');
   const [totalMembers, setTotalMembers] = useState(null);
   const [result, setResult] = useState(null);
@@ -34,7 +37,36 @@ function App() {
     showFriendsList: false,
     showLoader: false,
     disabled: true,
+    disabledNewCompanyBtn: true,
+    showConnectionError: false,
+    showInctruction: false,
+    showCurrentCompany: false,
+    showMemberNumberInputError: false,
+    showTotalMembersInputError: false,
+    showPasswordInputError: false,
+    showAllhaveSantaError: false,
+    showIncorrectPasswordError: false,
+    showNameMotFoundError: false,
+    showLanguageError: false,
+    showEmptyFieldError: false,
+    showCompanyNumberError: false,
   });
+
+  const serverConnectionError = () => {
+      setState({
+        ...state, 
+        showLoader: false,
+        showConnectionError: true,
+        showSecretSantaPage: false,
+        disabled: true,
+      })
+      setTimeout(() => {
+        setState({
+          ...state, showConnectionError: false,
+          disabled: true,
+        })
+      }, 3000)
+  }
 
   const hideMainPage = () => {
     setState({
@@ -53,19 +85,18 @@ function App() {
   }
 
   const getCompanyError = () => {
-    alert('Немає зʼєднання з сервером')
-        setState({
-          ...state,
-        })
+        serverConnectionError();
         setPasswordInputValue('');
         setCompanyInputValue('');
   }
 
   const allHaveSantasError = () => {
-    alert('В поточної компанії у всіх є таємний санта');
         setState({
           ...state,
+          showStartPage:true,
+          showSecretSantaPagen: false,
           showLoader: false,
+          showAllhaveSantaError: true,
         })
         setCompanyInputValue('')
         setPasswordInputValue('')
@@ -81,7 +112,10 @@ function App() {
       }
       if (falseStatuses.length === friends.length) {
         allHaveSantasError();
-      } 
+        return false;
+      } else {
+        return true;
+      }
   }
 
   const isValidPassword = (res) => {
@@ -89,12 +123,12 @@ function App() {
   }
 
   const passwordError = () => {
-    alert('Невірний пароль')
           setCompanyInputValue('')
           setPasswordInputValue('')
           setState({
             ...state,
             showLoader: false,
+            showIncorrectPasswordError: true,
           })
   }
 
@@ -112,8 +146,9 @@ function App() {
     SantaApi.get(companyInputValue)
       .then((res) => {
         if(isValidPassword) {
-          actualMembersControl(res);
-          setLocalCurrentCompany(res);
+          if(actualMembersControl(res)) {
+            setLocalCurrentCompany(res);
+          }
         } else {
           passwordError();
         }
@@ -128,6 +163,7 @@ function App() {
       showStartPage: false,
       showFriendsList: false,
       showLoader: true,
+      showConnectionError: false,
     })
     setCompanyInputValue(companyId);
     getCurrentCompanyFromApi();
@@ -136,20 +172,31 @@ function App() {
   const setCurrentCompanyOnServer = (company) => {
     setState({
       ...state,
+      showConnectionError: false,
       showStartPage: false,
-      showSecretSantaPage: true,
       showFriendsList: false,
+      showLoader: true,
     })
     SantaApi.post(company).then((res) => {
-      console.log('На сервер улетело:')
-      console.log(res.data)
-      setCurrentCompany(res.data)
-    }); 
+      console.log('На сервер улетело:');
+      console.log(res.data);
+      setCurrentCompany(res.data)})
+      .then(() => {
+        setState({
+          ...state,
+          showLoader: false,
+          showFriendsList: false,
+          showSecretSantaPage: true,
+          showCurrentCompany: true,
+        })
+    }).catch((e) => serverConnectionError())
     
   }
 
   const showNameNotFoundErr = () => {
-    alert(`Імʼя "${nameInputValue}" відсутнє в поточній компанії`)
+    setState({
+      ...state, showNameMotFoundError: true,
+    })
     setNameInputValue('');
   }
 
@@ -170,16 +217,26 @@ function App() {
         if(currentCompany.friends[i].id === selectedMember.id) {
           currentCompany.friends[i].status = false;
         }
-        newFriendsList.push(currentCompany.friends[i])
-        
-        
+        newFriendsList.push(currentCompany.friends[i]);
     }
+    setState({
+      ...state,
+      showLoader: true,
+      showSecretSantaPage: false,
+    })
     SantaApi.put(currentCompany, newFriendsList).then(res => {
       console.log('На сервере обновили:')
       console.log(res.data)
-      setCurrentCompany(res.data)
-      setResult('Ви будете таємним сантой у' + ' ' + selectedMember.name)
-    })
+      setCurrentCompany(res.data)})
+        .then(() => {
+          setState({
+            ...state,
+            showLoader: false,
+            showSecretSantaPage: false,
+          })
+          setResult(selectedMember.name)
+      }).then(() =>showResult())
+        .catch(e => serverConnectionError())
 
     console.log("Айдишка юзера:" + actualFriendsList[randomIndex].id)
   }
@@ -197,8 +254,9 @@ function App() {
   }
 
   const showRandomMember = () => {
-    const currentMember = currentCompany.friends.filter(e => e.name === nameInputValue)[0];
-    if(!isMember) {
+    if(currentCompany !== null) {
+      const currentMember = currentCompany.friends.filter(e => e.name === nameInputValue)[0];
+    if(!isMember(currentMember)) {
       showNameNotFoundErr();
     }
     else {
@@ -210,8 +268,11 @@ function App() {
         .then(() => alert('Немає участників без подарунків'))
       }
       selectRandomMember(actualFriendsList);
-      showResult();
     }
+    } else {
+      serverConnectionError();
+    }
+    
   }
 
   const updateNameInputText = (text) => {
@@ -234,9 +295,23 @@ function App() {
 
     return (
       <div className={styles.appWrapper}>
+        <div className={styles.background}>
+         <img src={background} alt="background"/>
+        </div>
+        <div className={styles.backgroundMobile}>
+         <img src={backgroundMobile} alt="background"/>
+        </div>
          <Snowfall />
         <div className={styles.appWrapperContent}>
-          {state.showMainPage && <MainPage hideMainPage={hideMainPage} />}
+           <Error 
+            nameInputValue={nameInputValue}
+            state={state}/>
+
+          {state.showMainPage && <MainPage 
+            state={state}
+            setState={setState}
+            isActiveInctructionBtn={state.isActiveInctructionBtn}
+            hideMainPage={hideMainPage} />}
 
           {state.showStartPage && (
             <StartPage
@@ -263,6 +338,7 @@ function App() {
 
           {state.showNewCompanyPage && (
             <NewCompany
+              membersInputValue={membersInputValue}
               updateNewCompanyTotalMembers={updateNewCompanyTotalMembers}
               state={state}
               setState={setState}
@@ -276,8 +352,15 @@ function App() {
             />
           )}
 
-          {state.showResultPage && <ResultPage result={result} />}
-          {state.showLoader && <Loader/>}
+          {state.showResultPage && 
+            <ResultPage 
+            state={state}
+            result={result}
+            newCompanyPassword={newCompanyPassword}
+            currentCompany={currentCompany} />}
+
+          {state.showLoader && 
+            <Loader/>}
         </div>
       </div>
     );

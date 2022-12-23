@@ -1,0 +1,61 @@
+.companyDataContainer {
+    padding-top: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.list {
+    background-color: rgba(255, 255, 255, 0.616);
+    padding: 10px;
+}
+
+.text {
+    font-weight: 600;
+    padding: 10px;
+}
+
+.number {
+    padding: 0 10px 0 10px;
+}
+
+.password  {
+    padding: 0 10px 10px 10px;
+    margin-bottom: 10px;
+}
+
+.number span {
+    font-weight: 600;
+    color: red;
+}
+
+.password span {
+    font-weight: 600;
+    color: red;
+}
+
+.warning {
+    font-weight: 600;
+    color: green;
+    background-color: rgba(255, 255, 255, 0.793);
+    padding: 10px;
+    margin-top: 10px;
+}
+
+@media(max-width: 1180px) {
+    .text {
+        background-color: rgba(255, 255, 255, 0.616);
+    }
+    .number {
+        background-color: rgba(255, 255, 255, 0.616);
+    }
+    .password {
+        background-color: rgba(255, 255, 255, 0.616);
+    }
+    .number span {
+        color: rgb(161, 27, 27);
+    }
+    
+    .password span {
+        color: rgb(161, 27, 27);
+    }
+}

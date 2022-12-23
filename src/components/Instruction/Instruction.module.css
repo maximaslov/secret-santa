@@ -1,0 +1,142 @@
+.instructionContainer {
+    max-width: 1800px;
+    width: 100%;
+    padding: 20px;
+    margin-top: 50px;
+    background-color: rgba(255, 255, 255, 0.794);
+    color: black;
+    text-shadow: 0px 0px 10px rgb(250, 248, 248);
+    animation: 1s show ease;
+}
+
+.closeBtnContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.closeBtn {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    background-color: white;
+    color: rgba(0, 0, 0, 0.59);
+    padding: 0;
+    line-height: 0;
+}
+
+.closeBtn:hover {
+    color: red;
+    border: solid 0.2px rgba(0, 0, 0, 0.59);
+}
+
+.instructionContainer h3{
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+.instructionContainer h4{
+    text-align: center;
+    font-size: 23px;
+    margin-bottom: 5px;
+}
+.instructionContainer p{
+    font-size: 23px;
+}
+
+.description {
+    height: 100%;
+}
+
+.firstText {
+    animation: 1.2s show ease;
+}
+.secondText {
+    animation: 1.4s show ease;
+}
+
+.secondTextTwo {
+    animation: 1.6s show ease;
+}
+.secondTextThree {
+    animation: 1.8s show ease;
+}
+.thirdText {
+    animation: 2s show ease;
+    margin-top: 20px;
+}
+.fourthText {
+    animation: 2.2s show ease;
+}
+.fifthText {
+    animation: 2.4s show ease;
+}
+.sixText {
+    animation: 2.6s show ease;
+}
+.seventhText {
+    animation: 2.8s show ease;
+}
+.eightText {
+    animation: 3s show ease;
+    margin: 10px 0 10px 0;
+    font-weight: 500;
+    color: rgb(2, 96, 2);
+}
+.ninethText {
+    animation: 3.2s show ease;
+}
+.tenText {
+    animation: 3.4s show ease;
+}
+.elevenText {
+    animation: 3.6s show ease;
+}
+.twelveText {
+    animation: 3.8s show ease;
+    margin: 10px 0 10px 0;
+    font-weight: 500;
+    color: rgb(2, 96, 2);
+}
+.thirteenText {
+    animation: 4s show ease;
+}
+.fourteenText {
+    animation: 4.2s show ease;
+}
+.seventeenText {
+    animation: 4.4s show ease;
+}
+.eighteenText {
+    animation: 4.6s show ease;
+}
+.nineteenText {
+    animation: 4.8s show ease;
+    margin-top: 20px;
+    color: red;
+    font-weight: 600;
+}
+.twentyText {
+    animation: 5s show ease;
+    margin-top: 20px;
+}
+
+.closeBottomBtn {
+    animation: 5.2s show ease;
+    width: 100%;
+    display: none;
+}
+
+@keyframes show {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+@media(max-width:1180px) {
+    .closeBottomBtn {
+        display: block;
+    }
+
+    .closeBtn {
+        box-shadow: 0px 0px 0.5px black;
+    }
+}

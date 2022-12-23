@@ -1,15 +1,27 @@
 import React, { useState } from "react";
 import styles from "./StartPage.module.css";
+import PasswordCheckbox from '../PasswordCheckbox/PasswordCheckbox';
 
 const StartPage = (props) => {
     const [passwordShown, setPasswordShown] = useState(false);
+
+    const showCompanyNumberErr = () => {
+        props.setState({
+            ...props.state, showCompanyNumberError: true,
+        })
+        setTimeout( () => {
+            props.setState({
+                ...props.state, showCompanyNumberError: false,
+            })}, 3000)
+    }
+
     const togglePassword = () => {
         setPasswordShown(!passwordShown);
       };
 
     const updateInputText = (e) => {
         if(isNaN(e.target.value)) {
-            alert('Номер компанії може бути тільки цифрою')
+            showCompanyNumberErr();
             e.target.value = '';
         }
         props.updateCompanyInputText(e.target.value);
@@ -17,13 +29,14 @@ const StartPage = (props) => {
 
     const updateInputPassword = (e) => {
         props.updateCompanyInputPassword((e.target.value));
+        console.log(props.passwordInputValue.length+1)
 
         if(props.companyInputValue !== ''
         && props.passwordInputValue !== ''){
             props.setState({
                 ...props.state, disabled: false,
             })
-        }
+        } 
     }
 
     const onSantaBtnClick = () => {
@@ -49,17 +62,17 @@ const StartPage = (props) => {
                     value={props.passwordInputValue}
                     placeholder="Введіть пароль вашоі компанії"
                     onChange={updateInputPassword}/>
-                    <form className={styles.checkbox}>
-                        <input onClick={togglePassword} type="checkbox"/>
-                        <label>Показати пароль</label>
-                    </form>
+                <PasswordCheckbox
+                    checkbox={styles.checkbox}
+                    togglePassword={togglePassword}
+                    checkboxInput={styles.checkboxInput} />
             </div>
             
             <button 
                 disabled={props.state.disabled ? true : false}
                 className={props.state.disabled ? styles.disabledBtn : styles.firstButton}
                 onClick={onSantaBtnClick}
-            >Cтати таємним сантой</button>
+            >Cтати таємним Сантою</button>
             <h3 className={styles.secondText}>Aбо</h3>
             <button className={styles.secondButton}
                 onClick={createNewCompany}
