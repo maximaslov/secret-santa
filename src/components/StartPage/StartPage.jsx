@@ -52,8 +52,7 @@ const StartPage = (props) => {
             <h3 className={styles.firstText}>Якщо компанія вже створена</h3>
             <div className={styles.inputs}>
                 <input className={styles.firstInput}
-                    type="text" 
-                    autoFocus={true}
+                    type="text"
                     value={props.companyInputValue}
                     placeholder="Введіть номер вашої компанії"
                     onChange={updateInputText}/>
