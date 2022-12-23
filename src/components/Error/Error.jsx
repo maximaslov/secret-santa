@@ -17,7 +17,7 @@ const Error = (props) => {
             <p>Паролі не співпадають.</p>}
 
             {props.state.showAllhaveSantaError &&
-            <p>В поточної компанії у всіх є таємний санта.</p>}
+            <p>У поточній компанії у всіх є таємний санта.</p>}
 
             {props.state.showIncorrectPasswordError &&
             <p>Невірний пароль.</p>}
@@ -31,8 +31,11 @@ const Error = (props) => {
             {props.state.showCompanyNumberError &&
             <p>Номер компанії може бути тільки цифрою.</p>}
 
+            {props.state.showCompanyNotFoundError &&
+            <p>Компанія з таким номером не знайдена.</p>}  
+
             {props.state.showLanguageError &&
-            <p className={styles.languageError}>Непогана реакція! Але у додатку доступна тільки українська мова.</p>}   
+            <p className={styles.languageError}>Непогана реакція! Але у додатку доступна тільки українська мова.</p>} 
         </div>
         
     )

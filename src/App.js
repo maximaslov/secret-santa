@@ -50,6 +50,7 @@ function App() {
     showLanguageError: false,
     showEmptyFieldError: false,
     showCompanyNumberError: false,
+    showCompanyNotFoundError: false,
   });
 
   const serverConnectionError = () => {
@@ -126,7 +127,18 @@ function App() {
   const isValidPassword = (res) => {
     return res.data.password === passwordInputValue;
   }
+  const showCompanyNotFoundError = () => {
+    setState({
+      ...state, showCompanyNotFoundError: true,
+    })
 
+    setTimeout(() => {
+      setState({
+        ...state, showCompanyNotFoundError: false,
+      })
+    }, 3000)
+  }
+  
   const passwordError = () => {
           setCompanyInputValue('')
           setPasswordInputValue('')
@@ -164,7 +176,12 @@ function App() {
         }
         console.log(typeof(res.data.password));
         console.log(typeof(passwordInputValue));
-      }).catch(e => getCompanyError())
+      }).catch(e => {
+        console.log(e.response.status)
+        if(e.response.status === 500){
+          showCompanyNotFoundError()
+        }else {getCompanyError();}
+      })
   }
 
   const getCurrentCompany = (companyId) => {
