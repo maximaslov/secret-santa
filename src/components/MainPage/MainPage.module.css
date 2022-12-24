@@ -63,6 +63,7 @@ div {
   font-size: 18px;
   background-color: white;
   color: rgba(45, 171, 19, 0.685);
+  animation: 1s show ease;
 }
 
 .instructionBtnActive:hover {
@@ -97,5 +98,9 @@ div {
 
     .MainPageContainer h3 {
       display: none;
+    }
+
+    .instructionBtnActive:hover {
+      color: rgba(45, 171, 19, 0.685);
     }
 }

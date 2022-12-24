@@ -106,7 +106,8 @@ p {
         background: url(./img/background-mobile.png);
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: center;
+        background-position-x: 25%;
+        background-position-y: 50%;   
         background-attachment: fixed;
     }
     button {

@@ -132,6 +132,7 @@ function App() {
     setState({
       ...state, showCompanyNotFoundError: true,
     })
+    setPasswordInputValue('');
 
     setTimeout(() => {
       setState({
