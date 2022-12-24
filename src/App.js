@@ -53,6 +53,7 @@ function App() {
     showCompanyNotFoundError: false,
   });
 
+
   const serverConnectionError = () => {
       setState({
         ...state, 
@@ -86,9 +87,9 @@ function App() {
   }
 
   const getCompanyError = () => {
-        serverConnectionError();
-        setPasswordInputValue('');
-        setCompanyInputValue('');
+    serverConnectionError();
+    setPasswordInputValue('');
+    setCompanyInputValue('');
   }
 
   const allHaveSantasError = () => {
@@ -177,8 +178,7 @@ function App() {
         console.log(typeof(res.data.password));
         console.log(typeof(passwordInputValue));
       }).catch(e => {
-        console.log(e.response.status)
-        if(e.response.status === 500){
+        if(e.response?.status === 500){
           showCompanyNotFoundError()
         }else {getCompanyError();}
       })
