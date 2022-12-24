@@ -237,7 +237,7 @@ function App() {
     })
   }
     
-  const selectRandomMember = (actualFriendsList) => {
+  const selectRandomMember = (actualFriendsList, currentMember) => {
     const randomIndex = Math.floor(Math.random() * actualFriendsList.length);
     const selectedMember = actualFriendsList[randomIndex];
     const newFriendsList = [];
@@ -263,7 +263,7 @@ function App() {
             showSecretSantaPage: false,
           })
           setResult(selectedMember.name)
-      }).then(() =>showResult())
+      }).then(() => showResult())
         .catch(e => serverConnectionError())
 
     console.log("Айдишка юзера:" + actualFriendsList[randomIndex].id)
@@ -291,11 +291,11 @@ function App() {
       const actualFriendsList = currentCompany.friends.filter(e => e.name !== currentMember.name && e.status);
       console.log('Список без текущего имени всех у кого статус фолс')
       console.log(actualFriendsList)
-      if(actualFriendsList === []) {
-        SantaApi.updateCompanyStatus(currentCompany)
-        .then(() => alert('Немає участників без подарунків'))
-      }
-      selectRandomMember(actualFriendsList);
+      // if(actualFriendsList === []) {
+      //   SantaApi.updateCompanyStatus(currentCompany)
+      //   .then(() => alert('Немає участників без подарунків'))
+      // }
+      selectRandomMember(actualFriendsList, currentMember);
     }
     } else {
       serverConnectionError();

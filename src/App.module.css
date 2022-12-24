@@ -105,10 +105,15 @@ p {
     body {
         background: url(./img/background-mobile.png);
         background-repeat: no-repeat;
-        background-size: cover;
+        /* background-size: cover; */
+        background-size: 100% 100%;
         background-position-x: 25%;
         background-position-y: 50%;   
         background-attachment: fixed;
+        top: 0; 
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
     }
     button {
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.352);

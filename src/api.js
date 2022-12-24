@@ -16,12 +16,7 @@ export const SantaApi = {
         return axios.put(URL+currentCompany.id, {...currentCompany, friends: newFriendsList});
     },
 
-    updateCompanyStatus(currentCompany, status) {
-        return axios.put(URL+currentCompany.id, {...currentCompany, status});
-    }
-
-    // unfollow(userId) {
-    //     return instanse.delete(`follow/${userId}`).then(res => res.data);
-    // },
-
+    // updateCompanyStatus(currentCompany, status) {
+    //     return axios.put(URL+currentCompany.id, {...currentCompany, status});
+    // }
 }
