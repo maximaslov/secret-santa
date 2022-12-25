@@ -54,7 +54,7 @@ p {
 
 .backgroundMobile {
     position: absolute;
-    z-index: -1;
+    z-index: -3;
     margin: 0 auto;
     display: none;
     width: 100%;
@@ -63,11 +63,10 @@ p {
 
 .backgroundMobile img {
     width: 100%;
-    margin: 0 auto;
-    height: 100vh;
+    height: 100%;
     position: fixed;
     z-index: -1;
-    object-fit: fill;
+    object-fit: cover;
 }
 
 .background {
@@ -98,22 +97,11 @@ p {
         display: none;
     }
 
-    /* .backgroundMobile {
+    .backgroundMobile {
         display: block;
-    } */
-
-    body {
-        background: url(./img/background-mobile.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position-x: 25%;
-        background-position-y: 50%;   
-        background-attachment: fixed;
-        top: 0; 
-        left: 0;
-        min-width: 100%;
-        min-height: 100%;
     }
+
+    
     button {
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.352);
         background-color: #45b5f7

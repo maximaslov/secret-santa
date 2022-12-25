@@ -10,7 +10,7 @@ import ResultPage from './components/ResultPage/ResultPage';
 import {SantaApi} from './api';
 import Loader from "./components/Loader/Loader";
 import background from "./../src/img/background.jpg";
-import backgroundMobile from "./../src/img/background-mobile-2.jpeg";
+import backgroundMobile from "./../src/img/background-mobile.png";
 import Error from './components/Error/Error'
 
 //mockapi.io 
