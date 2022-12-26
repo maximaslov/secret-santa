@@ -22,8 +22,8 @@ const Error = (props) => {
             {props.state.showIncorrectPasswordError &&
             <p>Невірний пароль.</p>}
 
-            {props.state.showNameMotFoundError &&
-            <p>Учасник з імʼям {props.nameInputValue} не знайден в поточній компанії.</p>}
+            {props.state.showNameNotFoundError &&
+            <p>Учасник з таким імʼям не знайден в поточній компанії.</p>}
 
             {props.state.showEmptyFieldError &&
             <p>Жодне поле не повинно бути пустим.</p>}
@@ -37,7 +37,6 @@ const Error = (props) => {
             {props.state.showLanguageError &&
             <p className={styles.languageError}>Непогана реакція! Але у додатку доступна тільки українська мова.</p>} 
         </div>
-        
     )
 }
 

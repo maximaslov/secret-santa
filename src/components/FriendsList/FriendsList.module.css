@@ -49,21 +49,16 @@ input{
     height: 39px;
     width: 39px;
 }
+
 .minus {
     height: 39px;
     width: 39px;
     margin: 0 5px 0 5px;
 }
 
-
 @keyframes show {
     from { opacity: 0; }
     to { opacity: 1; }
-  }
-
-@keyframes hide {
-    from { opacity: 1; }
-    to { opacity: 0; }
   }
 
 @media(max-width: 1180px) {

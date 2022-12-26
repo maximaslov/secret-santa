@@ -46,13 +46,23 @@ function App() {
     showPasswordInputError: false,
     showAllhaveSantaError: false,
     showIncorrectPasswordError: false,
-    showNameMotFoundError: false,
+    showNameNotFoundError: false,
     showLanguageError: false,
     showEmptyFieldError: false,
     showCompanyNumberError: false,
     showCompanyNotFoundError: false,
   });
 
+  const showEmptyFieldError = () => {
+    setState({
+      ...state, showEmptyFieldError: true,
+    });
+    setTimeout(() => {
+      setState({
+        ...state, showEmptyFieldError: false,
+      });
+    },3000)
+  }
 
   const serverConnectionError = () => {
       setState({
@@ -128,6 +138,7 @@ function App() {
   const isValidPassword = (res) => {
     return res.data.password === passwordInputValue;
   }
+
   const showCompanyNotFoundError = () => {
     setState({
       ...state, showCompanyNotFoundError: true,
@@ -176,12 +187,12 @@ function App() {
         } else {
           passwordError();
         }
-        console.log(typeof(res.data.password));
-        console.log(typeof(passwordInputValue));
       }).catch(e => {
         if(e.response?.status === 500){
           showCompanyNotFoundError()
-        }else {getCompanyError();}
+        }else {
+          getCompanyError();
+        }
       })
   }
 
@@ -206,8 +217,6 @@ function App() {
       showLoader: true,
     })
     SantaApi.post(company).then((res) => {
-      console.log('На сервер улетело:');
-      console.log(res.data);
       setCurrentCompany(res.data)})
       .then(() => {
         setState({
@@ -217,15 +226,19 @@ function App() {
           showSecretSantaPage: true,
           showCurrentCompany: true,
         })
-    }).catch((e) => serverConnectionError())
-    
+    }).catch((e) => serverConnectionError());
   }
 
   const showNameNotFoundErr = () => {
     setState({
-      ...state, showNameMotFoundError: true,
-    })
+      ...state, showNameNotFoundError: true,
+    });
     setNameInputValue('');
+    setTimeout(() => {
+      setState({
+        ...state, showNameNotFoundError: false,
+      })
+    }, 3000);
   }
 
   const createNewCompany = () => {
@@ -253,8 +266,7 @@ function App() {
       showSecretSantaPage: false,
     })
     SantaApi.put(currentCompany, newFriendsList).then(res => {
-      console.log('На сервере обновили:')
-      console.log(res.data)
+
       setCurrentCompany(res.data)})
         .then(() => {
           setState({
@@ -265,8 +277,6 @@ function App() {
           setResult(selectedMember.name)
       }).then(() => showResult())
         .catch(e => serverConnectionError())
-
-    console.log("Айдишка юзера:" + actualFriendsList[randomIndex].id)
   }
 
   const showResult = () => {
@@ -287,20 +297,16 @@ function App() {
     if(!isMember(currentMember)) {
       showNameNotFoundErr();
     }
+    if(nameInputValue === '') {
+      showEmptyFieldError();
+    }
     else {
       const actualFriendsList = currentCompany.friends.filter(e => e.name !== currentMember.name && e.status);
-      console.log('Список без текущего имени всех у кого статус фолс')
-      console.log(actualFriendsList)
-      // if(actualFriendsList === []) {
-      //   SantaApi.updateCompanyStatus(currentCompany)
-      //   .then(() => alert('Немає участників без подарунків'))
-      // }
       selectRandomMember(actualFriendsList, currentMember);
     }
     } else {
       serverConnectionError();
     }
-    
   }
 
   const updateNameInputText = (text) => {

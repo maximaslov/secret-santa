@@ -27,6 +27,7 @@
 .firstPasswordInput{
     animation: 2.5s show ease;
 }
+
 .secondPasswordInput{
     animation: 3s show ease;
 }
@@ -38,6 +39,7 @@
 .button {
     animation: 3.5s show ease;
 }
+
 .disabledBtn {
     background-color: rgba(0, 128, 0, 0.204);
     animation: 3.5s show ease;
@@ -64,16 +66,13 @@
     to { opacity: 1; }
   }
 
-@keyframes hide {
-    from { opacity: 1; }
-    to { opacity: 0; }
-  }
-
 @media (max-width: 1180px) {
+
     .firstText {
         color: white;
         text-shadow: 0px 0px 5px black;
     }
+
     .secondText {
         color: white;
         text-shadow: 0px 0px 5px black;

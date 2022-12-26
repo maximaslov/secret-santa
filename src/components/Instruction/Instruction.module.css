@@ -34,11 +34,13 @@
     font-size: 28px;
     margin-bottom: 5px;
 }
+
 .instructionContainer h4{
     text-align: center;
     font-size: 23px;
     margin-bottom: 5px;
 }
+
 .instructionContainer p{
     font-size: 23px;
 }
@@ -50,6 +52,7 @@
 .firstText {
     animation: 1.2s show ease;
 }
+
 .secondText {
     animation: 1.4s show ease;
 }
@@ -57,64 +60,81 @@
 .secondTextTwo {
     animation: 1.6s show ease;
 }
+
 .secondTextThree {
     animation: 1.8s show ease;
 }
+
 .thirdText {
     animation: 2s show ease;
     margin-top: 20px;
 }
+
 .fourthText {
     animation: 2.2s show ease;
 }
+
 .fifthText {
     animation: 2.4s show ease;
 }
+
 .sixText {
     animation: 2.6s show ease;
 }
+
 .seventhText {
     animation: 2.8s show ease;
 }
+
 .eightText {
     animation: 3s show ease;
     margin: 10px 0 10px 0;
     font-weight: 500;
     color: rgb(2, 96, 2);
 }
+
 .ninethText {
     animation: 3.2s show ease;
 }
+
 .tenText {
     animation: 3.4s show ease;
 }
+
 .elevenText {
     animation: 3.6s show ease;
 }
+
 .twelveText {
     animation: 3.8s show ease;
     margin: 10px 0 10px 0;
     font-weight: 500;
     color: rgb(2, 96, 2);
 }
+
 .thirteenText {
     animation: 4s show ease;
 }
+
 .fourteenText {
     animation: 4.2s show ease;
 }
+
 .seventeenText {
     animation: 4.4s show ease;
 }
+
 .eighteenText {
     animation: 4.6s show ease;
 }
+
 .nineteenText {
     animation: 4.8s show ease;
     margin-top: 20px;
     color: red;
     font-weight: 600;
 }
+
 .twentyText {
     animation: 5s show ease;
     margin-top: 20px;

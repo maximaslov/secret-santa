@@ -90,15 +90,12 @@ import styles from "./FriendsList.module.css";
                         </div> )
                     })
                   ) : (
-                    
                       <div 
                         className={styles.addMembersbutton}>
                           <button type="button" onClick={() => arrayHelpers.push('')}>
                             Додати учасників
                           </button>
                       </div>  
-                    
-                    
                   )}
                     <div className={styles.button}>
                       <button 

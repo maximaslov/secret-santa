@@ -17,6 +17,7 @@ const NewCompany = (props) => {
                 ...props.state, showMemberNumberInputError: false,
             })}, 3000)
     }
+
     const showTotalMembersInputError = () => {
         props.setState({
             ...props.state, showTotalMembersInputError: true,
@@ -26,6 +27,7 @@ const NewCompany = (props) => {
                 ...props.state, showTotalMembersInputError: false,
             })}, 3000)
     }
+
     const showPasswordInputError = () => {
         props.setState({
             ...props.state, 
@@ -63,6 +65,7 @@ const NewCompany = (props) => {
                 })
         }
     }
+
     const createCompany = () => {
         if(Number(props.membersInputValue) === 0 || Number(props.membersInputValue) < 3) {
             showTotalMembersInputError();
@@ -76,7 +79,6 @@ const NewCompany = (props) => {
                 showPasswordInputError();
             }
         }
-        
     }
     
     return (

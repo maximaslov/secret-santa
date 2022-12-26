@@ -13,6 +13,7 @@ const MainPage = (props) => {
             showInctruction: !props.state.showInctruction,
         })
       }
+      
     const onBtnCkick = () => {
         props.hideMainPage()
     }
@@ -74,8 +75,6 @@ const MainPage = (props) => {
         : null
         }
     </div>
-            
-        
     )
 }
 

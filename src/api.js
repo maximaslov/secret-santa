@@ -15,8 +15,4 @@ export const SantaApi = {
     put(currentCompany, newFriendsList) {
         return axios.put(URL+currentCompany.id, {...currentCompany, friends: newFriendsList});
     },
-
-    // updateCompanyStatus(currentCompany, status) {
-    //     return axios.put(URL+currentCompany.id, {...currentCompany, status});
-    // }
 }
