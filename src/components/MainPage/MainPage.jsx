@@ -38,7 +38,7 @@ const MainPage = (props) => {
         e.target.style.top = `${random(0, 90)}%`
     }
     return (
-        <div>
+        <div onClick={() => toggleShowInstruction()}>
             <button 
                 className={activeInstructionBtn ? styles.instructionBtnActive : styles.instructionBtn}
                 onClick={toggleShowInstruction}

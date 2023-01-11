@@ -52,7 +52,7 @@ function App() {
     showCompanyNumberError: false,
     showCompanyNotFoundError: false,
   });
-
+  
   const showEmptyFieldError = () => {
     setState({
       ...state, showEmptyFieldError: true,

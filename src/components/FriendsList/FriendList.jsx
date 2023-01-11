@@ -33,7 +33,7 @@ import styles from "./FriendsList.module.css";
   const createNewCompany = (values) => {
     if(values.friends.includes('')) {
       showEmptyFieldError();
-    } else if(values.friends.length <3) {
+    } else if(values.friends.length < 3) {
       showTotalMembersInputError();
     } else {
       const newCompany = {id: null, password: props.newCompanyPassword, friends: []}
