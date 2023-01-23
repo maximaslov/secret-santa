@@ -5,7 +5,7 @@ const Instruction = (props) => {
 
     return (
         <div>
-            <div className={styles.instructionContainer} onClick={e => e.stopPropagation()}>
+            <div className={styles.instructionContainer}>
                 <div className={styles.closeBtnContainer}>
                     <button 
                         className={styles.closeBtn}
