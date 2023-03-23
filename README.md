@@ -14,7 +14,7 @@ In the mobile version of the application, instead of selecting the language, the
 
 2.  Click on the "Create new company" button." <br>
 
-1[](https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-2.png)
+1[](https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-3.png)
 1[](https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-2.png)
 1[](https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-2.png)
 1[](https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-2.png)
