@@ -328,7 +328,8 @@ function App() {
   }
 
     return (
-      <div className={styles.appWrapper}>
+      <div 
+        className={styles.appWrapper}>
         <div className={styles.background}>
          <img src={background} alt="background"/>
         </div>
