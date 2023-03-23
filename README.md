@@ -9,6 +9,11 @@ The language of the application: Ukrainian.
 1. On the main screen, you can launch the application by selecting the Ukrainian language. The button for the Russian language will move away from you. You can also read these instructions on the main screen.
 In the mobile version of the application, instead of selecting the language, there is a button that says "Почати" (Start).<br>
 
+
+<p align="center">
+  <img src="https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-1.png" alt="">
+</p>
+
 ![](https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-1.png)
 
 ### If the company has not been created yet:
