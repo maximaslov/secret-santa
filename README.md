@@ -66,3 +66,35 @@ In the mobile version of the application, instead of selecting the language, the
 * Errors smoothly float from under the upper screen boundaries, are displayed for several seconds, and also smoothly fade out beyond the screen boundaries.
 
 * The loader (an animated image displayed when the user waits for a response from the server) looks like a dancing Santa.
+
+***
+## Error messages:
+
+Варианты сообщений об ошибках:
+
+1. **"Нажаль, немає звʼязку із сервером. Спробуйте, будь ласка, пізніше."** - If the server is not responding or if you have slow internet speed or no internet connection.
+
+2. **"Введіть, будь ласка, кількість участников цифрою."** - If characters other than digits were entered in the field for the number of participants.
+
+
+3. **"В компанії повинно бути щонайменше 3 учасника."** - If a number less than 3 was entered in the field for the number of participants.
+
+
+4. **"Паролі не співпадають."** - If the passwords entered in the first and second form.
+
+6. **"У поточній компанії у всіх є таємний санта."** - If there are no participants in the company whose number was entered, for whom a Secret Santa has not been assigned. Check if you entered the correct company number.
+
+
+6. **"Невірний пароль."** - If you entered an incorrect password for your company. Check if you entered the correct company number.
+
+
+7. **"Учасник з таким імʼям не знайден в поточній компанії."** - If the name you entered is not in the list registered under the current company number. Please contact the person who registered the company to clarify how they entered your name during registration.
+
+
+8. **"Жодне поле не повинно бути пустим."** -  If one or more fields were left empty when filling out the list of participants.
+
+
+9. **"Номер компанії може бути тільки цифрою."** - - If a character other than a digit was entered in the "Enter the company number" field during company registration or when trying to determine who you will be assigned as Secret Santa to.
+
+
+10. **"Компанія з таким номером не знайдена."**  If no company was registered under the entered number. Make sure you entered the correct number.
