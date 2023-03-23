@@ -1,5 +1,6 @@
 # Secret Santa
 Secret Santa is a single-page web application built with React.js, React Hooks, CSS3, CSS Flexbox, Formik, and Axios. It allows users to participate in an anonymous gift exchange for the New Year. The application does not require any registration or user data, is optimized for any device, does not contain ads, and is completely free.
+[URL](https://maximaslov.github.io/secret-santa/)
 <br>
 The language of the application: Ukrainian.
 ***
@@ -70,8 +71,6 @@ In the mobile version of the application, instead of selecting the language, the
 ***
 ## Error messages:
 
-Варианты сообщений об ошибках:
-
 1. **"Нажаль, немає звʼязку із сервером. Спробуйте, будь ласка, пізніше."** - If the server is not responding or if you have slow internet speed or no internet connection.
 
 2. **"Введіть, будь ласка, кількість участников цифрою."** - If characters other than digits were entered in the field for the number of participants.
@@ -98,3 +97,37 @@ In the mobile version of the application, instead of selecting the language, the
 
 
 10. **"Компанія з таким номером не знайдена."**  If no company was registered under the entered number. Make sure you entered the correct number.
+
+***
+## Technical Information:
+
+* The application was developed using the **React.js** JavaScript library.
+* The **useState()** hook was used to manage the state of the components.
+* **Modular CSS** approach was used for styling the components.
+* **CSS Flexbox** was used to ensure responsive and adaptive design for different devices.
+* The **Axios** library was used for server communication.
+* The **Formik** library was used to create the name registration form.
+* A free **mockapi.io** service is used as a backend mock.
+* The **React Snowfall** library was used to display snow on the page.
+
+***
+# ANNOUNCEMENT
+#### In the near future, an updated version of the Secret Santa 2.0 application will be released.
+**Development start date:** August 01, 2023
+**Estimated release date:** November 15, 2023.
+
+## What changes are planned:
+
+1. **Bug fixes:**
+  * The application's logic will be moved to context or some state management solution will be used.
+  * It will no longer be possible for the same person to become a secret Santa two or more times. Currently, this can lead to someone being left without a gift.
+  * It will not be possible to enter two or more identical names. Currently, the service does not recognize this.
+  * An issue that can occur with button states when creating a new company will be fixed. Currently, if all fields are filled out and then one is deleted, the "Next" button does not return to the "disabled" state.
+
+2. The problem with the limit on the number of company registrations, caused by the free tariff of mockapi.io, will be resolved.
+
+3. There will be a completely redesigned, modern, and more interactive design.
+
+4. The ability to use the application in English will be added.
+
+5. An external international domain will be connected.
