@@ -12,6 +12,6 @@ In the mobile version of the application, instead of selecting the language, the
 
 **If the company has not been created yet**
 
-2.  Click on the "Create new company" button."
+2.  Click on the "Create new company" button." <br>
 
 1[](https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-2.png)
