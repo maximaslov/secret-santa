@@ -45,7 +45,7 @@ In the mobile version of the application, instead of selecting the language, the
 6. After that, you will see the name of the person you will be giving a gift to, the list of participants, as well as the number and password of your company.
 
 <p align="center">
-  <img src="https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-61.png" alt="">
+  <img src="https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-6.png" alt="">
 </p>
 
 7. Pass the number and password of your company to all participants on the list.
@@ -63,13 +63,13 @@ In the mobile version of the application, instead of selecting the language, the
 2. Enter your name exactly as it was specified by the person who created the list of participants, and click the "Стати таємним Сантою".  (Become a Secret Santa) button.
 
 <p align="center">
-  <img src="https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/2-1.png" alt="">
+  <img src="https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/2-2.png" alt="">
 </p>
 
 3.  After that, you will see the name of the person to whom you will give a gift.
 
 <p align="center">
-  <img src="https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/3-1.png" alt="">
+  <img src="https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/2-3.png" alt="">
 </p>
 
 > **Attention! You can become a Secret Santa only once within one company. Any attempt to do it again will definitely lead to incorrect service operation and someone will be left without a gift, possibly even you.**
