@@ -2,7 +2,7 @@
 Secret Santa is a single-page web application built with React.js, React Hooks, CSS3, CSS Flexbox, Formik, and Axios. It allows users to participate in an anonymous gift exchange for the New Year. The application does not require any registration or user data, is optimized for any device, does not contain ads, and is completely free. <br>
 **The language of the application:** Ukrainian. <br>
 ## **[URL](https://maximaslov.github.io/secret-santa/)**
-<br>
+
 ***
 ## Instructions:
 
