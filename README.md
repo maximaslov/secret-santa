@@ -44,7 +44,8 @@ In the mobile version of the application, instead of selecting the language, the
 
 ![](https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/2-1.png)
 
-2. Enter your name exactly as it was specified by the person who created the list of participants, and click the "Стати таємним Сантою".  (Become a Secret Sant) button.
+2. Enter your name exactly as it was specified by the person who created the list of participants, and click the "Стати таємним Сантою".  (Become a Secret Santa) button.
+
 ![](https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/2-2.png)
 
 3.  After that, you will see the name of the person to whom you will give a gift.
@@ -54,4 +55,14 @@ In the mobile version of the application, instead of selecting the language, the
 > **Attention! You can become a Secret Santa only once within one company. Any attempt to do it again will definitely lead to incorrect service operation and someone will be left without a gift, possibly even you.**
 
 ***
-## 
+## Interesting features of the app:
+
+* On the app page in real-time mode, there is virtual snowfall. This is not an animated background picture. Snow falls on top of all the content. For this, the React Snowfall plugin was used.
+
+* In the full version of the site (when the screen width is greater than 1180px), if you try to select the Russian language, the button will run away from the mouse cursor. The button can be caught, but you will only be praised for your good reaction and informed that the app is available only in Ukrainian.
+
+* The mouse cursor looks like a New Year tree to raise the user's pre-New Year mood.
+
+* Errors smoothly float from under the upper screen boundaries, are displayed for several seconds, and also smoothly fade out beyond the screen boundaries.
+
+* The loader (an animated image displayed when the user waits for a response from the server) looks like a dancing Santa.
