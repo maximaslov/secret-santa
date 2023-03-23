@@ -9,3 +9,9 @@ Instructions:
 In the mobile version of the application, instead of selecting the language, there is a button that says "Почати" (Start).<br>
 
 ![](https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-1.png)
+
+**If the company has not been created yet**
+
+2.  Click on the "Create new company" button."
+
+1[](https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-2.png)
