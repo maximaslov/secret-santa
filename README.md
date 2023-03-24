@@ -132,7 +132,7 @@ In the mobile version of the application, instead of selecting the language, the
 ***
 # ANNOUNCEMENT
 #### In the near future, an updated version of the Secret Santa 2.0 application will be released.
-**Development start date:** August 01, 2023
+**Development start date:** August 01, 2023<br>
 **Estimated release date:** November 15, 2023.
 
 ## What changes are planned:
