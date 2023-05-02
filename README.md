@@ -16,7 +16,7 @@ In the mobile version of the application, instead of selecting the language, the
 
 ### If the company has not been created yet:
 
-2.  Click on the "Створити нову компаныю" (Create new company) button. <br>
+2.  Click on the "Створити нову компанію" (Create new company) button. <br>
 
 <p align="center">
   <img src="https://github.com/maximaslov/secret-santa/blob/main/src/img/for-readme/1-2.png" alt="">
